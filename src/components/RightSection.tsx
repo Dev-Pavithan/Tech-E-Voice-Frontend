@@ -47,24 +47,28 @@ const RightSection: React.FC<{ selectedChat: { _id: string; chatName: string; me
     useEffect(() => {
         if (window.SpeechRecognition || window.webkitSpeechRecognition) {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            recognitionRef.current = new SpeechRecognition();
-            recognitionRef.current.continuous = false;
-            recognitionRef.current.interimResults = false;
-            recognitionRef.current.lang = 'en-US';
-
-            recognitionRef.current.onresult = (event: SpeechRecognitionEvent) => {
+            const recognitionInstance = new SpeechRecognition(); // Use a constant instead of recognitionRef
+            recognitionInstance.continuous = false;
+            recognitionInstance.interimResults = false;
+            recognitionInstance.lang = 'en-US';
+    
+            recognitionInstance.onresult = (event: SpeechRecognitionEvent) => {
                 const transcript = event.results[0][0].transcript;
                 setMessage(transcript); // Set the recognized speech as the message input
                 setIsListening(false);
             };
-
-            recognitionRef.current.onerror = (event: SpeechRecognitionErrorEvent) => {
+    
+            recognitionInstance.onerror = (event: SpeechRecognitionErrorEvent) => {
                 console.error('Speech recognition error:', event.error);
                 setIsListening(false);
             };
+    
+            // Set it to recognitionRef so that it can be controlled elsewhere if needed
+            recognitionRef.current = recognitionInstance;
         }
     }, []);
-
+    
+    
     const sendMessage = async () => {
         if (!message.trim()) return;
 
@@ -75,6 +79,7 @@ const RightSection: React.FC<{ selectedChat: { _id: string; chatName: string; me
             ...allMessages,
             { role: "user", parts: [{ text: message }] }
         ];
+        
 
         setIsSent(false);
 
