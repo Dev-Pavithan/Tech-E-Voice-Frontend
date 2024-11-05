@@ -1,0 +1,43 @@
+{
+  "name": "chatgptclonegfg",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@types/dompurify": "^3.0.5",
+    "axios": "^1.7.7",
+    "buffer": "^6.0.3",
+    "classnames": "^2.5.1",
+    "dompurify": "^3.1.7",
+    "ibm-watson": "^9.1.0",
+    "marked": "^14.1.2",
+    "next": "^14.2.13",
+    "openai": "^4.65.0",
+    "prismjs": "^1.29.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "react-spinners": "^0.13.8",
+    "request-promise-native": "^1.0.9",
+    "sass": "^1.79.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/prismjs": "^1.26.4",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/uuid": "^10.0.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "typescript": "^5"
+  },
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
+}
